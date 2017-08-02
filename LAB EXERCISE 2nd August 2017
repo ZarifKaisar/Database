@@ -3,4 +3,5 @@
 3. select * from emp where sal=(select sal from emp where ename='SMITH');
 4. select * from emp where hiredate>(select hiredate from emp where ename = 'FORD');
 5. select * from emp where sal>(select sal from emp where ename='SMITH') and sal<(select sal from emp where ename='KING')
-6. 
+6. select * from emp where job='SALESMAN' and deptno in(select deptno from dept where loc!='DALLAS');
+7. select * from dept where deptno=(select deptno from emp where mgr=(select empno from emp where ename='CLARK'));
