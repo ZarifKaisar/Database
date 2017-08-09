@@ -4,3 +4,4 @@ select * from salgrade;
 select emp.*, grade from emp, salgrade where emp.sal between salgrade.losal and salgrade.hisal and ename = 'SMITH';
 select emp.*, grade, dname from emp, dept, salgrade where emp.sal between salgrade.losal and salgrade.hisal and emp.deptno = dept.deptno;
 select emp.*, grade, dname from emp, dept, salgrade where emp.sal between salgrade.losal and salgrade.hisal and emp.deptno = dept.deptno and grade in(1,2) and job ='MANAGER' and loc = 'CHICAGO';
+select emp.*, empno "ID" from emp,dept where emp.deptno = dept.deptno and job in ('CLERK', 'MANAGER') and dname in('ACCOUNTS', 'MARKETING')
