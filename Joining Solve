@@ -1,0 +1,18 @@
+
+select emp.*, empno "ID" from emp,dept where emp.deptno = dept.deptno and job in ('CLERK', 'MANAGER') and dname in('ACCOUNTING', 'MARKETING')
+
+select ename, job, dname, loc from emp, dept where emp.deptno = dept. deptno and loc not in('DALLAS');
+
+select dname, loc from emp, dept where emp.deptno = dept.deptno and mgr=(select empno from emp where ename = 'CLARK')
+
+select dept.* ,empno, ename, mgr from emp, dept where dept.deptno=emp.deptno and empno in (select mgr from emp)
+
+select * from emp, dept where emp.deptno = dept.deptno and loc = 'DALLAS'
+
+select * from emp,dept where dept.deptno = emp.deptno and dname = 'SALES' and sal = (select max(sal) from emp)
+
+select * from emp,dept where dept.deptno = emp.deptno and job in(select job from emp where ename = 'MILLER') or sal > (select sal from emp where ename ='ALLEN')
+
+select * from emp, dept where dept.deptno = emp.deptno and loc in('CHICAGO', 'DALLAS')
+
+select * from emp, salgrade where emp.sal between salgrade.losal and salgrade.hisal and grade in(2,3)
