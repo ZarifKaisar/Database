@@ -1,0 +1,10 @@
+select empno, ename, sal, dname, loc, grade from emp, dept, salgrade where emp.sal between salgrade.losal and salgrade.hisal and emp.deptno= dept.deptno and emp.deptno = (select deptno from emp where ename ='KING')
+select * from emp, salgrade where emp.sal between salgrade.losal and salgrade.hisal and sal >(select max(sal) from emp where job ='CLERK') order by sal desc
+select * from emp, dept where emp.deptno= dept.deptno and sal = (select max(sal) from emp,dept  where loc = 'CHICAGO' and emp.deptno= dept.deptno) and hiredate < (select max(hiredate) from emp, salgrade where emp.sal between salgrade.losal and salgrade.hisal and grade = 2)
+select ename, sal+nvl(comm, 0) "Total Remuneration" from emp, dept where emp.deptno= dept.deptno and job = 'SALESMAN' and dname = 'SALES'
+select dname from dept where dept.deptno=(select deptno from emp group by deptno having count(*)=(select max(count(empno)) from emp group by deptno));
+select empno, ename sal, dname , grade from emp, dept, salgrade where emp.deptno = dept.deptno and emp.sal between salgrade.losal and salgrade.hisal and emp.job in ('MANAGER','ANALYST') and loc in ( 'NEW YORK', 'DALLAS') and round((sysdate-hiredate)/365) = 7;
+select empno, ename sal, dname , grade from emp, dept, salgrade where emp.deptno = dept.deptno and emp.sal between salgrade.losal and salgrade.hisal and emp.job in ('MANAGER','ANALYST') and loc in ( 'NEW YORK', 'DALLAS') and  round(months_between(sysdate, hiredate)/12) = 7;
+select * from emp, dept, salgrade where emp.sal between salgrade.losal and salgrade.hisal and emp.deptno= dept.deptno and grade in (4,5) and job in('MANAGER', 'ANALYST') and dname = 'SALES';
+;
+select e.ename , m.ename from emp e, emp m where e.mgr = m.empno;
