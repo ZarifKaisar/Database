@@ -1,0 +1,12 @@
+select * from emp e, emp m where e.hiredate > m.hiredate and m.ename = 'BLAKE';
+
+select * from emp s, emp j where s.sal > j.sal and j.ename = 'JONES';
+
+select * from emp e, emp m where e.sal>m.sal and e.mgr = m.empno;
+
+select m.ename from emp e, emp m where e.mgr = m.empno group by m.ename having count(m.ename) >= 2;
+
+select m.ename from emp e, emp m where e.mgr = m.empno and m.job = 'ANALYST' group by m.ename
+
+select m.ename from emp e, emp m where e.mgr = m.empno group by m.ename having count(m.empno) = (select max(count(e.empno)) from emp e group by e.mgr)
+ 
