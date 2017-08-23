@@ -1,0 +1,1 @@
+1. select * from emp, dept where emp.deptno = dept.deptno and dname='SALES' and sal = (select max(sal) from emp,dept where emp.deptno = dept.deptno and dname='SALES');
